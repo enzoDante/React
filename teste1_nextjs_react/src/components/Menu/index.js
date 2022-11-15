@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { StyledPerfil } from "./components/perfil";
+import Conta from "./components/Conta";
 
 const StyledMenu = styled.header`
     display: flex;
@@ -73,25 +73,3 @@ function Links(){
 }
 
 
-function Conta(){
-    //os eventos devem usar o useState ou useContext
-    const [ativado, setAtivado] = React.useState(false)
-    return(
-        <StyledPerfil >
-            <div className="profile" onClick={(e) => {
-                // const btnmenu = document.querySelector(".menu")
-                // btnmenu.classList.toggle('active')
-                setAtivado(qualquerVariavel => !qualquerVariavel)
-            }}>
-                <img src="https://github.com/enzodante.png"/>
-            </div>
-            <div className={ativado ? "menu active" : 'menu'}>
-                <h3>Enzo Dante</h3>
-                <a href="">ver perfil</a>
-                <a href="">Configs</a>
-                <a href="">Ajuda</a>
-                <a href="">Sair</a>
-            </div>
-        </StyledPerfil>    
-    )
-}
