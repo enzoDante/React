@@ -1,3 +1,5 @@
+import Button from "./Button"
+
 export default function Evento({numero}){
     function meuevento2(){
         console.log("apertou"+numero)
@@ -6,6 +8,9 @@ export default function Evento({numero}){
     return(
         <div>
             <p>Clique abaixo</p>
+            <Button event={meuevento2} text="primeiro evento" />
+            <Button event={meuevento} text="segundo butão" />
+
             <button onClick={meuevento2}>Butão</button>
             <br/>
             <button onClick={() => {
@@ -15,7 +20,7 @@ export default function Evento({numero}){
         </div>
     )
 }
-// function meuevento(num){
-//     console.log("apertou"+num)
-//     alert("teste"+num)
-// }
+function meuevento(){
+    console.log("apertou")
+    alert("outro botão apertadooo")
+}
