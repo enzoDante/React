@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 
 export default function Condicao(){
     const [email, setEmail] = useState()
@@ -8,6 +8,10 @@ export default function Condicao(){
         e.preventDefault();
         setUserEmail(email)
     }
+    useEffect(() => {
+        console.log(email)
+
+    })
 
     return(
         <div>

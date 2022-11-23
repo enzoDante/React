@@ -6,6 +6,7 @@ import React, { useState } from 'react'
 import Lista from './components/Lista';
 import SeuNome from './components/SeuNome';
 import Saudacao from './components/Saudacao';
+import FormUsu from './components/formsA/FormUsu';
 
 function App() {
   const [atual, setAtual] = React.useState(false)
@@ -20,6 +21,7 @@ function App() {
         <button onClick={() => setAtual(qualquer => !qualquer)}>{atual ? "velho" : "novo"}</button>
         {atual ? (
           <>
+            <FormUsu />
             <h1>Novo</h1>
             <SeuNome setNome={setNome} nome={nome} />
             <Saudacao nome={nome} />
