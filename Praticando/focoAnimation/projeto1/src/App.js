@@ -1,7 +1,8 @@
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 //, Switch, Route, Link
 import Header from './components/Header';
-import Home from './components/Home';
+import Cadastro from './pages/Conta/Cadastro';
+import Home from './pages/Home';
 
 function App() {
   return (
@@ -13,6 +14,9 @@ function App() {
         {/* navbar superior */}
         <Route exact='true' path='/' element={<Home />}></Route>
         <Route path='/Sobre'></Route>
+
+        {/* usuario perfil */}
+        <Route path='/criarconta' element={<Cadastro />}></Route>
 
       </Routes>
 

@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import {Link} from 'react-router-dom'
 import { StyledNav } from './components/StyleNav'
 import Perfil from './components/Perfil'
+import { useState } from 'react'
 
 const StyledMenu = styled.header`
     margin-top: -1px;
@@ -28,11 +29,13 @@ const StyledMenu = styled.header`
 `
 
 export default function Header(){
+    const [logado, setLogado] = useState(false)
+
     return(
         <StyledMenu>
             <Logo />
             <Navegar />
-            <Perfil />
+            {logado ? <Perfil setLogado={setLogado} /> : <div style={{margin: "20px"}}><Link to='/criarconta'>Criar conta</Link></div>}
         </StyledMenu>
     )
 }
@@ -52,6 +55,9 @@ function Navegar(){
         <StyledNav>
             <Link to='/'>Home</Link>
             <Link to='/Sobre'>Sobre</Link>
+            <Link to='/Blog'>Blog</Link>
+            <Link to='/Contato'>Contato</Link>
+
         </StyledNav>
     )
 }
