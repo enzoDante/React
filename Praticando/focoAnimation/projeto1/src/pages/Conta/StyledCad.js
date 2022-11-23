@@ -12,25 +12,48 @@ export const StyledDiv = styled.div`
     padding: 20px;
 
     form{
-        background-color: #AAFADE;
+        background-color: #FAF8FC;
         width: 350px;
         margin: auto;
         font-size: 1.2em;
         border-radius: 5px;
         padding: 20px;
         text-align: left;
-
+        position: relative;
     }
     form div{
         margin: 20px;
+        position: relative;
+    }
+    .lab{
+        color: black;
+        pointer-events: none;
+        transition: 500ms;
+        /* transform: translateX(20px) translateY(10px); */
+
+    }
+    label a{
+        color: black;
+    }
+    input:focus{
+        top: -20px;
+        left: 0;
+        color: #70D4D0;
+        font-size: 0.8em;
     }
     input[type=text], input[type=email], input[type=password]{
         display: block;
+        border: none;
+        color: black;
+        border-bottom: 1px solid black;
+        background: transparent;
+        outline: none;
         font-size: 1.1em;
         padding: 5px;
         margin: auto;
     }
     button{
+        background-color: #C7E7FD;
         display: block;
         padding: 6px;
         font-size: 1.1em;

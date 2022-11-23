@@ -30,22 +30,22 @@ export default function Cadastro(){
         <StyledDiv>
             <form action="" method="post" autoComplete='off'>
                 <div>
-                    <label htmlFor="nome">Nome</label>
+                    <label className='lab' htmlFor="nome">Nome</label>
                     <input type="text" onChange={valueInput} value={user.nome} name="nome" id="nome" />
                     <p>{valido.nome}</p>
                 </div>
                 <div>
-                    <label htmlFor="email">Email:</label>
+                    <label className='lab' htmlFor="email">Email:</label>
                     <input type="text" onChange={valueInput} value={user.email} name="email" id="email" />
                     <p>{valido.email}</p>
                 </div>
                 <div>
-                    <label htmlFor="senha">Senha</label>
+                    <label className='lab' htmlFor="senha">Senha</label>
                     <input type="text" onChange={valueInput} value={user.senha} name="senha" id="senha" />
                     <p>{valido.senha}</p>
                 </div>
                 <div>
-                    <label htmlFor="csenha">Confirmar Senha</label>
+                    <label className='lab' htmlFor="csenha">Confirmar Senha</label>
                     <input type="text" onChange={valueInput} value={user.csenha} name="csenha" id="csenha" />
                     <p>{valido.csenha}</p>
                 </div>
