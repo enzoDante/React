@@ -13,7 +13,7 @@ const StyledMenu = styled.header`
     border: 1px solid ${({ theme }) => theme.borderBase || "#e5e5e5"};
     align-items: center;
     gap: 16px;
-    position: fixed;
+    /* position: fixed; */
     width: 100%;
     .logo {
     width: 100%;
