@@ -35,12 +35,6 @@ export const StyledDiv = styled.div`
     label a{
         color: black;
     }
-    input:focus{
-        top: -20px;
-        left: 0;
-        color: #70D4D0;
-        font-size: 0.8em;
-    }
     input[type=text], input[type=email], input[type=password]{
         display: block;
         border: none;
