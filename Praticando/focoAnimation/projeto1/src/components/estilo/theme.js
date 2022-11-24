@@ -1,3 +1,5 @@
+import {createContext, useState} from 'react'
+
 export const lightTheme = {
     backgroundBase: '#f9f9f9',
     background1: 'white', // #EBF4F8
@@ -14,6 +16,27 @@ export const darkTheme = {
     textNavHover: '#024959',
     textNavHover2: '#75BDDF',
     backgroundNav: 'white'
+}
+
+export const ThemeContexto = createContext({
+    mode: false,
+    setMode: () => {}
+})
+
+export default function ThemeProvider({children}){
+    const [mode, setMode] = useState(false)
+
+    const ContextValue = {
+        mode: mode,
+        setMode: setMode
+    }
+
+
+    return(
+        <ThemeContexto.Provider value={ContextValue}>
+            {children}
+        </ThemeContexto.Provider>
+    )
 }
 
 /**

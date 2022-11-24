@@ -80,6 +80,9 @@ export const StyledPerfil = styled.div`
         max-width: 25px;
         margin-right: 10px;
         opacity: 0.5;
+        background-color: white;
+        border-radius: 10px;
+        padding: 2px;
         transition: 500ms;
     }
     li:hover img{
@@ -96,6 +99,7 @@ export const StyledPerfil = styled.div`
     label{
         color: ${({theme}) => theme.textDefault || '#555'};
         font-weight: 500;
+        margin-left: 10px;
         transition: 500ms;
         cursor: pointer;
     }

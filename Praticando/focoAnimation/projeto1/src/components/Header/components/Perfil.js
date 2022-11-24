@@ -1,11 +1,16 @@
-import {  useState } from "react";
+import React, {  useState, useContext } from "react";
 import { StyledPerfil } from "./StyledPerfil";
 import {Link} from 'react-router-dom'
+import { ThemeContexto } from "../../estilo/theme";
 
 
-export default function Perfil({setDarkt, setLogado}){
+export default function Perfil({setLogado}){
     const [perfilAtivado, setPerfilAtivado] = useState(false)
+    const {mode, setMode} = useContext(ThemeContexto)
 
+    React.useEffect(() => {
+        console.log(mode)
+    })
     return(
         <StyledPerfil>
             <div className="profile" onClick={(e) => {
@@ -21,11 +26,11 @@ export default function Perfil({setDarkt, setLogado}){
                     <li><img src="/images/settings.png" alt="" /><Link to="/config">Configs</Link></li>
                     <li>
                         <button id="tema" onClick={(e) => {
-                            setDarkt(status => !status)
+                            setMode(status => !status)
                         }}> 
                             {/* night-mode2.png  -  bom e moon.png - bom */}
                             {/* brightness.png  =-= bom */}
-                            <img src="/images/brightness.png" alt=""/>
+                            <img src={"/images/"+ (mode?'brightness.png' : 'night-mode2.png')} alt=""/>
                         </button>
                         <label htmlFor="tema">Tema</label>
                     </li>

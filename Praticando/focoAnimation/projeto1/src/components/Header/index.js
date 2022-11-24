@@ -25,14 +25,14 @@ const StyledMenu = styled.header`
   }
 `
 
-export default function Header({setDarkt}){
+export default function Header(){
     const [logado, setLogado] = useState(true)
 
     return(
         <StyledMenu>
             <Logo />
             <Navegar />
-            {logado ? <Perfil setDarkt={setDarkt} setLogado={setLogado} /> : <div style={{margin: "20px"}}><Link to='/criarconta'>Criar conta</Link></div>}
+            {logado ? <Perfil setLogado={setLogado} /> : <div style={{margin: "20px"}}><Link to='/criarconta'>Criar conta</Link></div>}
         </StyledMenu>
     )
 }

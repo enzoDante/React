@@ -1,21 +1,24 @@
-import {  useState } from 'react';
+import { useContext } from 'react';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
-import {ThemeProvider} from 'styled-components'
+import { ThemeProvider} from 'styled-components'
 import { CSSGeral } from './components/estilo/CSSGeral';
-import { lightTheme, darkTheme } from './components/estilo/theme';
+import { lightTheme, darkTheme, ThemeContexto } from './components/estilo/theme';
 //, Switch, Route, Link
 import Header from './components/Header';
 import Cadastro from './pages/Conta/Cadastro';
 import Home from './pages/Home';
 
 function App() {
-  const [Darkt, setDarkt] = useState(false)
+  // const [Darkt, setDarkt] = useState(false)
+  const {mode} = useContext(ThemeContexto)
+  // setMode(false)
 
   return (
     <Router>
-      <ThemeProvider theme={Darkt ? darkTheme : lightTheme}>
+      {/* Darkt */}
+      <ThemeProvider theme={mode ? darkTheme : lightTheme}>
         <CSSGeral />
-        <Header setDarkt={setDarkt}/>
+        <Header/>
 
         {/* páginas */}
         <Routes>
