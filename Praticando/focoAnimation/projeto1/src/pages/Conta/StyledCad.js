@@ -7,12 +7,12 @@ export const StyledDiv = styled.div`
     margin: auto;
     margin-top: 5vh;
     border-radius: 20px;
-    background-color: white;
+    background-color: ${({theme}) => theme.background1 || 'white'};
     text-align: center;
     padding: 20px;
 
     form{
-        background-color: #FAF8FC;
+        background-color: ${({theme}) => theme.backgroundForm || '#FAF8FC'};
         width: 350px;
         margin: auto;
         font-size: 1.2em;
@@ -26,7 +26,7 @@ export const StyledDiv = styled.div`
         position: relative;
     }
     .lab{
-        color: black;
+        color: ${({theme}) => theme.textDefault || 'black'};
         pointer-events: none;
         transition: 500ms;
         /* transform: translateX(20px) translateY(10px); */

@@ -2,11 +2,12 @@ import {createContext, useState} from 'react'
 
 export const lightTheme = {
     backgroundBase: '#f9f9f9',
-    background1: 'white', // #EBF4F8
+    background1: '#DBF2F9', // #EBF4F8
     textDefault: '#2C2738',
     textNavHover: '#B3B5F5',
     textNavHover2: '#026773',
-    backgroundNav: '#2C2738'
+    backgroundNav: '#2C2738',
+    backgroundForm: '#F0F0E8'
 }
 
 export const darkTheme = {
@@ -15,7 +16,8 @@ export const darkTheme = {
     textDefault: '#D6E1DF',
     textNavHover: '#024959',
     textNavHover2: '#75BDDF',
-    backgroundNav: 'white'
+    backgroundNav: 'white',
+    backgroundForm: '#202020'
 }
 
 export const ThemeContexto = createContext({

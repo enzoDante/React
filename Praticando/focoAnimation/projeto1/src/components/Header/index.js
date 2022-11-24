@@ -2,7 +2,8 @@ import styled from 'styled-components'
 import {Link} from 'react-router-dom'
 import { StyledNav } from './components/StyleNav'
 import Perfil from './components/Perfil'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import { ThemeContexto } from '../estilo/theme'
 
 const StyledMenu = styled.header`
     /* margin-top: -1px; */
@@ -23,16 +24,35 @@ const StyledMenu = styled.header`
       max-width: 127px;
     }
   }
+
+  #tema2{
+    width: 16px;
+    background-color: transparent;
+    border: none;
+    margin: 10px;
+    cursor: pointer;
+  }
 `
 
 export default function Header(){
-    const [logado, setLogado] = useState(true)
+    // precisa do node js--- login e cadastro
+    const [logado, setLogado] = useState(false)
+    const {mode, setMode} = useContext(ThemeContexto)
 
     return(
         <StyledMenu>
             <Logo />
             <Navegar />
-            {logado ? <Perfil setLogado={setLogado} /> : <div style={{margin: "20px"}}><Link to='/criarconta'>Criar conta</Link></div>}
+            {logado ? (<Perfil setLogado={setLogado} />) : (
+                <div style={{margin: "20px"}}>
+                    <Link to='/criarconta'>Criar conta</Link>
+                    <button id="tema2" onClick={(e) => {
+                            setMode(status => !status)
+                    }}> 
+                        <img src={"/images/"+ (mode?'brightness.png' : 'night-mode2.png')} alt=""/>
+                    </button>
+                </div>
+            )}
         </StyledMenu>
     )
 }
