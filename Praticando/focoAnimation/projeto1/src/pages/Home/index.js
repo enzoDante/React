@@ -1,21 +1,41 @@
-import styled from 'styled-components'
+import { StyledHome } from './StyledHome'
+import {useEffect} from 'react'
 
-const StyledDiv = styled.main`
-    background-color: blue;
-    color: white;
-    min-width: 200px;
-    max-width: 1000px;
-    min-height: 500px;
-    margin: auto;
-    margin-top: 5vh;
-    border-radius: 20px;
-`
+import testejs from './testejs.json'
 
-export default function Home(){
+export default function Home(){    
+
+    //chaves de objetos: categoria1 e categoria2
+    const testenames = Object.keys(testejs)
+    useEffect(() => {
+        console.log(testenames)
+    })
+
     return(
-        <StyledDiv>
-            <h1>centro</h1>
+        <StyledHome>
+            <h1>Projetos</h1>
+            {
+                testenames.map((element, index) => {
 
-        </StyledDiv>
+                    //todos os valores dentro de categoria1 exemp  testejs['categoria2']
+                    const elNames = testejs[element]
+
+                    return(
+                        <div key={index}>
+                            <h1>Categoria: {element}</h1>
+                            {elNames.map((projet) => {
+
+                                return(
+                                    <div key={projet.id}>
+                                        <h3>Nome: {projet.projeto}</h3>
+                                        <p>{projet.sobre}</p>
+                                    </div>
+                                )
+                            })}
+                        </div>
+                    )
+                })
+            }
+        </StyledHome>
     )
 }

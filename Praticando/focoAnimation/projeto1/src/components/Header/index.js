@@ -36,7 +36,7 @@ const StyledMenu = styled.header`
 
 export default function Header(){
     // precisa do node js--- login e cadastro
-    const [logado, setLogado] = useState(false)
+    const [logado, setLogado] = useState(true)
     const {mode, setMode} = useContext(ThemeContexto)
 
     return(

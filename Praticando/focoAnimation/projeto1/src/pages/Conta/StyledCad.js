@@ -17,6 +17,7 @@ export const StyledDiv = styled.div`
         margin: auto;
         font-size: 1.2em;
         border-radius: 5px;
+        box-shadow: 2px 2px 3px #111112;
         padding: 20px;
         text-align: left;
         position: relative;
@@ -33,13 +34,13 @@ export const StyledDiv = styled.div`
 
     }
     label a{
-        color: black;
+        color: ${({theme}) => theme.textDefault || 'black'};
     }
     input[type=text], input[type=email], input[type=password]{
         display: block;
         border: none;
-        color: black;
-        border-bottom: 1px solid black;
+        color: ${({theme}) => theme.textDefault || 'black'};
+        border-bottom: 1px solid ${({theme}) => theme.textDefault || 'black'};
         background: transparent;
         outline: none;
         font-size: 1.1em;

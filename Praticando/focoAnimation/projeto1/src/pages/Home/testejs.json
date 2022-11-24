@@ -1,0 +1,36 @@
+{
+    "categoria1": [
+        {
+            "id": "1",
+            "projeto": "'t1'",
+            "sobre": "'coisas'"
+        },
+        {
+            "id": "2",
+            "projeto": "'t2'",
+            "sobre": "'cois2as'"
+        },
+        {
+            "id": "3",
+            "projeto": "'t13'",
+            "sobre": "'coisas3'"
+        }
+    ],
+    "categoria2": [
+        {
+            "id": "4",
+            "projeto": "'t441'",
+            "sobre": "'coisa4s"
+        },
+        {
+            "id": "5",
+            "projeto": "'t15'",
+            "sobre": "'coisa5s'"
+        },
+        {
+            "id": "6",
+            "projeto": "'t1656'",
+            "sobre": "'coisas66'"
+        }
+    ]
+}

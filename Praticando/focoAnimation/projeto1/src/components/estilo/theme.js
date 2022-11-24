@@ -3,6 +3,7 @@ import {createContext, useState} from 'react'
 export const lightTheme = {
     backgroundBase: '#f9f9f9',
     background1: '#DBF2F9', // #EBF4F8
+    background2: '#f0f0f0',
     textDefault: '#2C2738',
     textNavHover: '#B3B5F5',
     textNavHover2: '#026773',
@@ -13,6 +14,7 @@ export const lightTheme = {
 export const darkTheme = {
     backgroundBase: '#181818',
     background1: '#1C2025',
+    background2: '#313131',
     textDefault: '#D6E1DF',
     textNavHover: '#024959',
     textNavHover2: '#75BDDF',

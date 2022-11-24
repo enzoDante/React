@@ -9,7 +9,7 @@ export default function Perfil({setLogado}){
     const {mode, setMode} = useContext(ThemeContexto)
 
     React.useEffect(() => {
-        console.log(mode)
+        // console.log(mode)
     })
     return(
         <StyledPerfil>
