@@ -93,7 +93,28 @@ export const StyledPerfil = styled.div`
         font-weight: 500;
         transition: 500ms;
     }
+    label{
+        color: ${({theme}) => theme.textDefault || '#555'};
+        font-weight: 500;
+        transition: 500ms;
+        cursor: pointer;
+    }
     li:hover a{
         color: ${({theme}) => theme.textNavHover2 || '#75BDDF'};
+    }
+    label:hover{
+        color: ${({theme}) => theme.textNavHover2 || '#75BDDF'};
+    }
+    button{
+        font-size: 1em;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        background-color: transparent;
+        border-color: transparent;
+        cursor: pointer;
+    }
+    button img{
+        opacity: 1;
     }
 `
