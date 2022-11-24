@@ -25,13 +25,10 @@ export default function Blog(){
                             {elNames.map((post) => {
 
                                 return(
-                                    <>
-                                    
-                                        <article key={post.id}>
-                                            <h3>{post.titulo}</h3>
-                                            <textarea disabled name="" id="" cols="30" rows="10">{post.sobre}</textarea>
-                                        </article>
-                                    </>
+                                    <article key={post.id}>
+                                        <h3>{post.titulo}</h3>
+                                        <textarea disabled value={post.sobre} name="" id="" cols="30" rows="10"></textarea>
+                                    </article>
                                 )
                             })}
                         </div>
