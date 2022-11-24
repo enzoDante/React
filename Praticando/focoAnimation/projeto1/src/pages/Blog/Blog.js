@@ -1,11 +1,12 @@
 import { useEffect } from "react"
 import { StyledBlog } from "./StyledBlog"
-import testejs from './testejs.json'
+// import testejs from './testejs.json'
+import posts from './posts.json'
 
 
 export default function Blog(){
     //chaves de objetos: categoria1 e categoria2
-    const testenames = Object.keys(testejs)
+    const testenames = Object.keys(posts)
     useEffect(() => {
         // console.log(testenames)
     })
@@ -17,18 +18,20 @@ export default function Blog(){
                 testenames.map((element, index) => {
 
                     //todos os valores dentro de categoria1 exemp  testejs['categoria2']
-                    const elNames = testejs[element]
+                    const elNames = posts[element]
 
                     return(
                         <div key={index}>
-                            <h1>Categoria: {element}</h1>
-                            {elNames.map((projet) => {
+                            {elNames.map((post) => {
 
                                 return(
-                                    <div key={projet.id}>
-                                        <h3>Nome: {projet.projeto}</h3>
-                                        <p>{projet.sobre}</p>
-                                    </div>
+                                    <>
+                                    
+                                        <article key={post.id}>
+                                            <h3>{post.titulo}</h3>
+                                            <textarea disabled name="" id="" cols="30" rows="10">{post.sobre}</textarea>
+                                        </article>
+                                    </>
                                 )
                             })}
                         </div>
@@ -38,3 +41,17 @@ export default function Blog(){
         </StyledBlog>        
     )
 }
+/**
+ * <div key={index}>
+        <h1>Categoria: {element}</h1>
+        {elNames.map((projet) => {
+
+            return(
+                <div key={projet.id}>
+                    <h3>Nome: {projet.projeto}</h3>
+                    <p>{projet.sobre}</p>
+                </div>
+            )
+        })}
+    </div>
+ */
