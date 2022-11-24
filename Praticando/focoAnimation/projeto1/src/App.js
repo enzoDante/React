@@ -5,6 +5,7 @@ import { CSSGeral } from './components/estilo/CSSGeral';
 import { lightTheme, darkTheme, ThemeContexto } from './components/estilo/theme';
 
 import Header from './components/Header';
+import Blog from './pages/Blog/Blog';
 import Cadastro from './pages/Conta/Cadastro';
 import Home from './pages/Home';
 
@@ -23,6 +24,8 @@ function App() {
           {/* navbar superior */}
           <Route exact='true' path='/' element={<Home />}></Route>
           <Route path='/Sobre'></Route>
+          <Route path='/Blog' element={<Blog />}></Route>
+          <Route path='/Contato'></Route>
 
           {/* usuario perfil */}
           <Route path='/criarconta' element={<Cadastro />}></Route>
