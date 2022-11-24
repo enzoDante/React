@@ -5,13 +5,13 @@ import Perfil from './components/Perfil'
 import { useState } from 'react'
 
 const StyledMenu = styled.header`
-    margin-top: -1px;
+    /* margin-top: -1px; */
+    /* margin: -1px; */
     display: flex;
     flex-direction: row;
     min-height: 80px;
     justify-content: space-between;
-    background-color: ${({ theme }) => theme.backgroundLevel1 || "#97ACDE"};
-    border: 1px solid ${({ theme }) => theme.borderBase || "#e5e5e5"};
+    background-color: ${({ theme }) => theme.background1 || "#97ACDE"};
     align-items: center;
     gap: 16px;
     /* position: fixed; */
@@ -22,20 +22,17 @@ const StyledMenu = styled.header`
     @media (min-width: 600px) {
       max-width: 127px;
     }
-    .text {
-      fill: ${({ theme }) => theme.textColorBase || "#222222"};
-    }
   }
 `
 
-export default function Header(){
-    const [logado, setLogado] = useState(false)
+export default function Header({setDarkt}){
+    const [logado, setLogado] = useState(true)
 
     return(
         <StyledMenu>
             <Logo />
             <Navegar />
-            {logado ? <Perfil setLogado={setLogado} /> : <div style={{margin: "20px"}}><Link to='/criarconta'>Criar conta</Link></div>}
+            {logado ? <Perfil setDarkt={setDarkt} setLogado={setLogado} /> : <div style={{margin: "20px"}}><Link to='/criarconta'>Criar conta</Link></div>}
         </StyledMenu>
     )
 }

@@ -41,7 +41,7 @@ export const StyledPerfil = styled.div`
         top: 120px;
         right: -5px;
         padding: 10px 20px;
-        background: #fff;
+        background: ${({theme}) => theme.background1 || '#fff'};
         width: 130px;
         box-sizing: 0 5px 25px rgba(0,0,0,0.1);
         border-radius: 15px;
@@ -61,11 +61,12 @@ export const StyledPerfil = styled.div`
         right: 28px;
         width: 20px;
         height: 20px;
-        background-color: #fff;
+        background-color: ${({theme}) => theme.background1 || 'white'};
         transform: rotate(45deg);
     }
     h3{
         margin: 5px;
+        color: ${({theme}) => theme.textDefault || 'black'};
     }
 
     ul li{
@@ -88,11 +89,11 @@ export const StyledPerfil = styled.div`
     li a{
         display: inline-block;
         text-decoration: none;
-        color: #555;
+        color: ${({theme}) => theme.textDefault || '#555'};
         font-weight: 500;
         transition: 500ms;
     }
     li:hover a{
-        color: #75BDDF;
+        color: ${({theme}) => theme.textNavHover2 || '#75BDDF'};
     }
 `
