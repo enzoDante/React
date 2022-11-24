@@ -30,8 +30,6 @@ export default function ThemeProvider({children}){
         mode: mode,
         setMode: setMode
     }
-
-
     return(
         <ThemeContexto.Provider value={ContextValue}>
             {children}
