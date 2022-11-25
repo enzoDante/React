@@ -1,23 +1,17 @@
-import {  useContext, useEffect } from "react"
-import { CorContext } from "./Cor"
-
+import { useContext } from "react"
+import { Context } from "./ContextoTeste"
 
 export default function C2(){
-    const corcc = useContext(CorContext)
-    // const [mode, setMode] = useState('false')
-    const {mode, setMode} = corcc
-
-    useEffect(() => {
-        console.log(corcc)
-        console.log(mode)
-    })
-
+    const {mode, setMode} = useContext(Context)
     return(
         <>
-            <h2>aaaaaaaaaaaaa</h2>
-            <button onClick={(e) =>{
-                setMode(status => !status)
-            }}>cccc</button>
+            <h1>Componente 2</h1>
+            <button onClick={() => {
+                if(mode === 'legal')
+                    setMode('mudou')
+                else
+                    setMode('legal')
+            }}>Mudar texto</button>
         </>
     )
 }
