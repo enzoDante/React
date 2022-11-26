@@ -2,7 +2,10 @@ import { createGlobalStyle } from "styled-components";
 
 export const CSSGeral = createGlobalStyle`
     body{
+        margin: 0;
+        padding: 0;
         background-color: ${({theme}) => theme.backgroundBase || '#dcf1f1'};
+        font-family: Arial, Helvetica, sans-serif;
     }
     body::-webkit-scrollbar{
         width: 4px;

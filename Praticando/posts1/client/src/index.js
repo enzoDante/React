@@ -2,14 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import ProviderTheme from './components/estilos/theme';
+import UserProvider from './components/userConfig/user';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ProviderTheme>
-      <App />
-    </ProviderTheme>
+    <UserProvider>
+      <ProviderTheme>
+        <App />
+      </ProviderTheme>
+    </UserProvider>
   </React.StrictMode>
 );
 

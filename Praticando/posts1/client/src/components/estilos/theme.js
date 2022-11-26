@@ -29,7 +29,7 @@ export const ThemeContext = createContext({
 })
 
 export default function ProviderTheme({children}){
-    const [mode, setMode] = useState(false)
+    const [mode, setMode] = useState(true)
     const alterarTheme = {
         mode: mode,
         setMode: setMode
