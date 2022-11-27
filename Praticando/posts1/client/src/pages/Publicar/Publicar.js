@@ -67,12 +67,12 @@ export default function Publicar(){
                     {img.length > 0 && img.map((foto, index) => {
                     
                         return(                            
-                            <div className={(img.length === 1 || (index===2 && img.length === 3)) ? "imagemUnica bloco" : "vimgs bloco"}>
+                            <div key={foto} className={(img.length === 1 || (index===2 && img.length === 3)) ? "imagemUnica bloco" : "vimgs bloco"}>
                                 <span type="" className="removerimg" onClick={() => {
                                     limparInputFile(index)
                                 }}>Remover</span>
 
-                                <div id="imgpost" className={(img.length === 1 || (index===2 && img.length === 3)) ? "imagemUnica" : "vimgs"} key={foto}>
+                                <div id="imgpost" className={(img.length === 1 || (index===2 && img.length === 3)) ? "imagemUnica" : "vimgs"}>
                                 
                                     <img onClick={() => {
                                         limparInputFile(index)

@@ -43,7 +43,7 @@ export default function Nav(){
 
     return(
         <StyledMenu>
-            <Logo />
+            {window.innerWidth > 600 && <Logo />}
             <Navegar />
             {user.id !== '' ? <Perfil /> : (
                 <div>
