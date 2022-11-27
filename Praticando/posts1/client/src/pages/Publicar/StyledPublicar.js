@@ -118,18 +118,41 @@ export const StyledPublicar = styled.main`
             color: red;
         }
 
-        #imgpost{
-            max-width: 600px;
-            overflow: hidden;
-            height: 400px;
-        }       
+        #divImagens{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            /* repeat(2, minmax(1fr, 1fr)) */
+            grid-auto-flow: dense;
+            
+        }
 
-        #imgpost img{
-            width: 600px;
+        #imgpost{
+            /* grid-column: span 2; - ocupa 2 coluna */
+            /* max-width: 250px; */
+            overflow: hidden;
+            /* height: 250px; */
+        }
+        .imagemUnica{
+            grid-column: span 2;
+            max-width: 500px;
             height: 400px;
+        }
+        .vimgs{
+            max-width: 250px;
+            height: 250px;
+        }  
+
+        .vimgs img{
+            width: 250px;
+            height: 250px;
             object-fit: contain;
             cursor: pointer;
         }
+        .imagemUnica img{
+            width: 500px;
+            height: 400px;
+            object-fit: contain;
+        }   
 
         #imgpost img:hover{
             animation: tremer 500ms infinite;

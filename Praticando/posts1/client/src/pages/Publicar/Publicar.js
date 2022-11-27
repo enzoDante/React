@@ -16,17 +16,23 @@ export default function Publicar(){
     }
 
     const [img, setImg] = useState([])
+    const [imgTarget, setImgTarget] = useState([]) //enviar ao back-end p upload
+    // https://sharklabs.com.br/reactjs-nodejs-tutorial-sobre-file-upload/
+
     const ref = useRef() //tenho q estudar isso
     
     const criarImagem = (e) => {
         if(img.length < 4){
             setImg([...img, URL.createObjectURL(e.target.files[0])])
+            setImgTarget([...imgTarget, e.target.files])
         }
     }
     
     const limparInputFile = id => {
         const s = img.filter((foto, index) => index !== id)
+        const s2 = imgTarget.filter((t, index) => index !== id)
         setImg(s)
+        setImgTarget(s2)
     }
     // const limparInputFile = () => {
     //     ref.current.value = ""
@@ -34,6 +40,8 @@ export default function Publicar(){
     useEffect(() => {
         // console.log('aa')
         // console.log(img)
+        // console.log("separa")
+        // console.log(imgTarget)
         // console.log(i)
     })
 
@@ -46,19 +54,21 @@ export default function Publicar(){
                 </div>
                 <div>
                     <input type="file" name="img" id="img" accept="image/*" ref={ref} onChange={criarImagem} />
-                    <label htmlFor="img" id="img">escolha imagem <img src="/images/image.png" alt="" /></label>
+                    <label htmlFor="img" id="img">inserir imagem <img src="/images/image.png" alt="" /></label>
                 </div>
-                {img.length > 0 && img.map((foto, index) => {
+                <div id="divImagens">
+                    {img.length > 0 && img.map((foto, index) => {
                     
-                    return(
-                        <div id="imgpost" key={foto}>
-                            <img onClick={() => {
-                                
-                                limparInputFile(index)
-                            }} src={foto} alt="" />
-                        </div>
-                    )
-                })}
+                        return(
+                            <div id="imgpost" className={(img.length === 1 || (index===2 && img.length === 3)) ? "imagemUnica" : "vimgs"} key={foto}>
+                                <img onClick={() => {
+                    
+                                    limparInputFile(index)
+                                }} src={foto} alt="" />
+                            </div>
+                        )
+                    })}
+                </div>
                 <div>
                     <textarea name="texto" className={(validar.texto !== ' ' && validar.texto !== '') ? "invalido" : undefined} onChange={setValues} id="texto"></textarea>
                     <p>{validar.texto}</p>
