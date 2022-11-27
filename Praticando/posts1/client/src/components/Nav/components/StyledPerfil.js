@@ -79,6 +79,7 @@ export const StyledPerfil = styled.div`
     ul li img{
         max-width: 25px;
         margin-right: 10px;
+        margin-left: -25px;
         opacity: 0.5;
         background-color: white;
         border-radius: 10px;
@@ -101,6 +102,8 @@ export const StyledPerfil = styled.div`
         font-weight: 500;
         margin-left: 10px;
         transition: 500ms;
+        display: flex;
+        margin-top: -25px;
         cursor: pointer;
     }
     li:hover a{
@@ -111,6 +114,7 @@ export const StyledPerfil = styled.div`
     }
     button{
         font-size: 1em;
+        margin-left: -10px;
         border-radius: 50%;
         width: 30px;
         height: 30px;

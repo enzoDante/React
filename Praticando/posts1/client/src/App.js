@@ -4,6 +4,7 @@ import { ThemeProvider } from 'styled-components';
 import { darkTheme, lightTheme, ThemeContext } from './components/estilos/theme';
 import {CSSGeral} from './components/estilos/CSSGeral'
 import Nav from './components/Nav/Nav';
+import Home from './pages/Home/Home';
 
 function App() {
   const {mode} = useContext(ThemeContext)
@@ -17,7 +18,14 @@ function App() {
 
       {/* rotas */}
       <Routes>
-        <Route exact='true' path='/'></Route>
+        {/* === Nav header === */}
+        <Route exact='true' path='/' element={<Home />}></Route>
+        <Route path='/Post'></Route>
+        <Route path='/Contato'></Route>
+
+        {/* === User === */}
+
+
       </Routes>
       </ThemeProvider>
     </Router>
