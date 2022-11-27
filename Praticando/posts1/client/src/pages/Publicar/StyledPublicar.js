@@ -5,6 +5,7 @@ export const StyledPublicar = styled.main`
     max-width: 1200px;
     min-height: 500px;
     margin: auto;
+    margin-top: 8vh;
     padding: 20px;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
@@ -135,11 +136,11 @@ export const StyledPublicar = styled.main`
         }
 
         @keyframes tremer{
-            0% {transform: rotate(2deg);}
-            25% {transform: rotate(-2deg);}
-            50% {transform: rotate(2deg);}
-            75% {transform: rotate(-2deg);}
-            100% {transform: rotate(2deg);}
+            0% {transform: rotate(1deg);}
+            25% {transform: rotate(-1deg);}
+            50% {transform: rotate(1deg);}
+            75% {transform: rotate(-1deg);}
+            100% {transform: rotate(1deg);}
         }
         
     }

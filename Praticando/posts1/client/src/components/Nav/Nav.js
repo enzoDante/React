@@ -10,6 +10,8 @@ const StyledMenu = styled.header`
     display: flex;
     flex-direction: row;
     min-height: 80px;
+    position: fixed;
+    top: 0;
     justify-content: space-between;
     background-color: ${({ theme }) => theme.background1 || "#97ACDE"};
     align-items: center;

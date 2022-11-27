@@ -5,6 +5,7 @@ export const StyledHome = styled.main`
     max-width: 1200px;
     min-height: 500px;
     margin: auto;
+    margin-top: 8vh;
     padding: 20px;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
@@ -29,7 +30,8 @@ export const StyledHome = styled.main`
             color: ${({theme}) => theme.textDefault};
 
             .imgperfil{
-                position: relative;
+                /* position: relative; */
+                position: initial;
                 border-radius: 50%;
                 width: 60px;
                 height: 60px;
