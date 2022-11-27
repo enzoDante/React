@@ -64,7 +64,7 @@ export default function Publicar(){
 
                                 <button className="removerimg" onClick={() => {
                                     limparInputFile(index)
-                                }}></button>
+                                }}>Remover</button>
                                 <img onClick={() => {                    
                                     limparInputFile(index)
                                 }} src={foto} alt="" />

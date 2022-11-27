@@ -12,7 +12,7 @@ export const StyledPublicar = styled.main`
     background-color: ${({theme}) => theme.backgroundForm};
 
     form{
-        position: relative;
+        position: initial;
         max-width: 500px;
         margin: auto;
         background-color: ${({theme}) => theme.backgroundForm2};
@@ -150,8 +150,9 @@ export const StyledPublicar = styled.main`
         }
         .imagemUnica img{
             width: 500px;
-            height: 400px;
+            height: 300px;
             object-fit: contain;
+            cursor: pointer;
         }   
 
         #imgpost img:hover{
@@ -168,8 +169,8 @@ export const StyledPublicar = styled.main`
         .removerimg{
             width: 30px;
             height: 30px;
-            background-image: url("/images/delete-button.png");
-            background-size: cover;
+            /* background-image: url("/images/delete-button.png");
+            background-size: cover; */
             border: none;
             position: absolute;
             
