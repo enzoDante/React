@@ -61,8 +61,11 @@ export default function Publicar(){
                     
                         return(
                             <div id="imgpost" className={(img.length === 1 || (index===2 && img.length === 3)) ? "imagemUnica" : "vimgs"} key={foto}>
-                                <img onClick={() => {
-                    
+
+                                <button className="removerimg" onClick={() => {
+                                    limparInputFile(index)
+                                }}></button>
+                                <img onClick={() => {                    
                                     limparInputFile(index)
                                 }} src={foto} alt="" />
                             </div>

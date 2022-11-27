@@ -165,6 +165,15 @@ export const StyledPublicar = styled.main`
             75% {transform: rotate(-1deg);}
             100% {transform: rotate(1deg);}
         }
+        .removerimg{
+            width: 30px;
+            height: 30px;
+            background-image: url("/images/delete-button.png");
+            background-size: cover;
+            border: none;
+            position: absolute;
+            
+        }
         
     }
 `
