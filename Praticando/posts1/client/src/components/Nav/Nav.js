@@ -74,7 +74,7 @@ function Navegar(){
     return(
         <StyledNav>
             <Link to='/'>Home</Link>
-            <Link to='/Post'>Postar</Link>
+            <Link to='/Publicar'>Postar</Link>
             <Link to='/Contato'>Contato</Link>
         </StyledNav>
     )

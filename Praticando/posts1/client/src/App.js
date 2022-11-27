@@ -5,6 +5,7 @@ import { darkTheme, lightTheme, ThemeContext } from './components/estilos/theme'
 import {CSSGeral} from './components/estilos/CSSGeral'
 import Nav from './components/Nav/Nav';
 import Home from './pages/Home/Home';
+import Publicar from './pages/Publicar/Publicar';
 
 function App() {
   const {mode} = useContext(ThemeContext)
@@ -20,7 +21,7 @@ function App() {
       <Routes>
         {/* === Nav header === */}
         <Route exact='true' path='/' element={<Home />}></Route>
-        <Route path='/Post'></Route>
+        <Route path='/Publicar' element={<Publicar />}></Route>
         <Route path='/Contato'></Route>
 
         {/* === User === */}
