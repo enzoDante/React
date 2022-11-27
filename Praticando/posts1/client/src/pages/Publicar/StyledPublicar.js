@@ -125,6 +125,13 @@ export const StyledPublicar = styled.main`
             grid-auto-flow: dense;
             
         }
+        .bloco{
+            border: 1px solid ${({theme}) => theme.textDefault};
+            border-radius: 10px;
+            /* margin: 5px; */
+            margin-bottom: 1vh;
+            /* padding: 5px; */
+        }
 
         #imgpost{
             /* grid-column: span 2; - ocupa 2 coluna */
@@ -135,22 +142,22 @@ export const StyledPublicar = styled.main`
         .imagemUnica{
             grid-column: span 2;
             max-width: 500px;
-            height: 400px;
+            height: 300px;
         }
         .vimgs{
             max-width: 250px;
-            height: 250px;
+            height: 260px;
         }  
 
         .vimgs img{
             width: 250px;
-            height: 250px;
+            height: 220px;
             object-fit: contain;
             cursor: pointer;
         }
         .imagemUnica img{
             width: 500px;
-            height: 300px;
+            height: 250px;
             object-fit: contain;
             cursor: pointer;
         }   
@@ -167,12 +174,19 @@ export const StyledPublicar = styled.main`
             100% {transform: rotate(1deg);}
         }
         .removerimg{
-            width: 30px;
+            width: 100px;
+            background-color: red;
+            align-items: center;
+            justify-content: center;
+            color: ${({theme}) => theme.textDefault};
+            display: flex;
             height: 30px;
+            border-radius: 10px;
             /* background-image: url("/images/delete-button.png");
             background-size: cover; */
             border: none;
-            position: absolute;
+            position: initial;
+            cursor: pointer;
             
         }
         
