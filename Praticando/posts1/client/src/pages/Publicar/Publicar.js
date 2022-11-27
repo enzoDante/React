@@ -20,12 +20,18 @@ export default function Publicar(){
     // https://sharklabs.com.br/reactjs-nodejs-tutorial-sobre-file-upload/
 
     const ref = useRef() //tenho q estudar isso
+    const [imgMax, setImgMax] = useState('')
     
     const criarImagem = (e) => {
         if(img.length < 4){
             setImg([...img, URL.createObjectURL(e.target.files[0])])
             setImgTarget([...imgTarget, e.target.files])
+            setImgMax(' ')
         }
+        else setImgMax('Você atingiu o limite de 4 imagens!')
+        setTimeout(() => {
+            setImgMax(' ')
+        }, 6000);
     }
     
     const limparInputFile = id => {
@@ -55,6 +61,7 @@ export default function Publicar(){
                 <div>
                     <input type="file" name="img" id="img" accept="image/*" ref={ref} onChange={criarImagem} />
                     <label htmlFor="img" id="img">inserir imagem <img src="/images/image.png" alt="" /></label>
+                    <p>{imgMax}</p>
                 </div>
                 <div id="divImagens">
                     {img.length > 0 && img.map((foto, index) => {

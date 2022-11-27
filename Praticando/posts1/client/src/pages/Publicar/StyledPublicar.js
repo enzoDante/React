@@ -165,6 +165,30 @@ export const StyledPublicar = styled.main`
         #imgpost img:hover{
             animation: tremer 500ms infinite;
         }
+        @media screen and (max-width: 600px){
+            .bloco{
+                margin: auto;
+                margin-bottom: 1vh;
+            }
+            .imagemUnica{
+                max-width: 300px;
+                height: 260px;
+            }
+            .imagemUnica img{
+                width: 300px;
+            }
+            .vimgs{
+                max-width: 300px;
+                grid-column: span 2;
+            }
+            .vimgs img{
+                width: 300px;
+            }
+
+            #imgpost img:hover{
+                animation: none;
+            }
+        }
 
         @keyframes tremer{
             0% {transform: rotate(1deg);}

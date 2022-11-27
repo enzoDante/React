@@ -31,6 +31,21 @@ export default function Home(){
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ullam magnam modi reprehenderit commodi quas excepturi minus, vel assumenda voluptate rerum, dolor quos, esse quam officiis quod molestiae cumque id voluptatum.</p>
                 </div>
             </div>
+
+
+            <div className="post">
+                <div className="userP">
+                    {/* ====================== envolve o back-end ====================== */}
+                    {/* visitar perfil do usuario q publicou */}
+                    <Link to="/Perfil" className="imgperfil"><img src="/images/profile.jpg" alt="" /></Link>
+                    {/* página do post */}
+                    <Link><h2>Titulo</h2></Link>
+                    {/* ====================== envolve o back-end ====================== */}
+                </div>
+                <div className="content">
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ullam magnam modi reprehenderit commodi quas excepturi minus, vel assumenda voluptate rerum, dolor quos, esse quam officiis quod molestiae cumque id voluptatum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos, impedit eligendi quam undeuam beatae, repudiandae cupiditate sequi sapiente rerum, fugit sunt itaque earum, architecto quisquam obcaecati numquam ullam porro recusandae! Ratione, tenetur atque.</p>
+                </div>
+            </div>
             
         </StyledHome>
     )
