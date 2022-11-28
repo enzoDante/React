@@ -28,7 +28,7 @@ export default function Config(){
         <StyledConfig>
             <form action="" method="post" autoComplete="off">
                 <div>
-                    <input type="file" ref={imgRef} onChange={imgValue} name="foto" id="foto" />
+                    <input type="file" ref={imgRef} onChange={imgValue} accept='image/*' name="foto" id="foto" />
                     <label htmlFor="foto" id="limg">Imagem de perfil <img src="/images/image.png" alt="" /></label>
                 </div>
                 <div id="profPic">

@@ -6,12 +6,12 @@ export const UserContext = createContext({
     img: '',
     setUser: () => {}
 })
-
+//profile.jpg
 export default function UserProvider({children}){
     const [user, setUser] = useState({
-        id: '1',
-        nome: 'Enzo Dante',
-        img: 'profile.jpg'
+        id: '',
+        nome: '',
+        img: ''
     })
 
     const alterUser = {
