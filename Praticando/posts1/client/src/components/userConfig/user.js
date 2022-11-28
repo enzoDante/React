@@ -9,7 +9,7 @@ export const UserContext = createContext({
 
 export default function UserProvider({children}){
     const [user, setUser] = useState({
-        id: '1',
+        id: '',
         nome: 'Enzo Dante',
         img: 'profile.jpg'
     })

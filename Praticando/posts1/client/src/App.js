@@ -8,6 +8,9 @@ import Home from './pages/Home/Home';
 import Publicar from './pages/Publicar/Publicar';
 import Contato from './pages/Contato/Contato';
 import PerfilUser from './pages/Perfiluser/PerfilUser';
+import Cadastro from './pages/Conta/Cadastro';
+import Login from './pages/Conta/Login';
+import Config from './pages/Config/Config';
 
 function App() {
   const {mode} = useContext(ThemeContext)
@@ -28,8 +31,11 @@ function App() {
 
         {/* === User === */}
         <Route path='/perfil' element={<PerfilUser />}></Route>
-        <Route path='/config'></Route>
+        <Route path='/config'element={<Config />}></Route>
 
+        {/* create account */}
+        <Route path='/Cadastro' element={<Cadastro />}></Route>
+        <Route path='/Login' element={<Login />}></Route>
 
       </Routes>
       </ThemeProvider>
