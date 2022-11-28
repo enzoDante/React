@@ -6,6 +6,8 @@ import {CSSGeral} from './components/estilos/CSSGeral'
 import Nav from './components/Nav/Nav';
 import Home from './pages/Home/Home';
 import Publicar from './pages/Publicar/Publicar';
+import Contato from './pages/Contato/Contato';
+import PerfilUser from './pages/Perfiluser/PerfilUser';
 
 function App() {
   const {mode} = useContext(ThemeContext)
@@ -22,9 +24,11 @@ function App() {
         {/* === Nav header === */}
         <Route exact='true' path='/' element={<Home />}></Route>
         <Route path='/Publicar' element={<Publicar />}></Route>
-        <Route path='/Contato'></Route>
+        <Route path='/Contato' element={<Contato />}></Route>
 
         {/* === User === */}
+        <Route path='/perfil' element={<PerfilUser />}></Route>
+        <Route path='/config'></Route>
 
 
       </Routes>

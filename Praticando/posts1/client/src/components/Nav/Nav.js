@@ -82,11 +82,6 @@ function Navegar(){
             <div id="menu" onClick={()=>{
                 setAtivado(status => !status)
             }}>|||</div>
-            {/* {ativado && (
-                <div>
-
-                </div>
-            )} */}
             <div id={ativado ? undefined : "links"} className={ativado ? "navAtiv" : undefined}>
                 <Link to='/'>Home</Link>
                 <Link to='/Publicar'>Postar</Link>

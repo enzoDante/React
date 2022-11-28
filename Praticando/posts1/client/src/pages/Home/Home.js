@@ -11,7 +11,7 @@ export default function Home(){
                     {/* visitar perfil do usuario q publicou */}
                     <Link to="/Perfil" className="imgperfil"><img src="/images/profile.jpg" alt="" /></Link>
                     {/* página do post */}
-                    <Link><h2>Titulo</h2></Link>
+                    <Link to='/post'><h2>Titulo</h2></Link>
                     {/* ====================== envolve o back-end ====================== */}
                 </div>
                 <div className="img"><img src="/images/posts/a.jpg" alt="" /></div>
