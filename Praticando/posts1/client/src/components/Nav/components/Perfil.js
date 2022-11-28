@@ -34,7 +34,7 @@ export default function Perfil(){
                         </button>
                     </li>
 
-                    <li><img src="/images/question.png" alt="" /><Link to="/ajuda">Ajuda</Link></li>
+                    {/* <li><img src="/images/question.png" alt="" /><Link to="/ajuda">Ajuda</Link></li> */}
 
                     <li><img src="/images/log-out.png" alt="" /><Link to="/sair">Sair</Link></li>
                 </ul>

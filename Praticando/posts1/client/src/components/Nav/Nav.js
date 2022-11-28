@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import { StyledNav } from "./components/StyledNav"
 import {Link} from 'react-router-dom'
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { UserContext } from "../userConfig/user"
 import Perfil from "./components/Perfil"
 import { ThemeContext } from "../estilos/theme"
@@ -40,10 +40,10 @@ const StyledMenu = styled.header`
 export default function Nav(){
     const {user} = useContext(UserContext)
     const {mode, setMode} = useContext(ThemeContext)
-
+    // window.innerWidth > 600 && 
     return(
         <StyledMenu>
-            {window.innerWidth > 600 && <Logo />}
+            <Logo />
             <Navegar />
             {user.id !== '' ? <Perfil /> : (
                 <div>
@@ -61,6 +61,9 @@ export default function Nav(){
 
 const StyledLogo = styled.div`
     margin: 10px;
+    @media screen and (max-width: 600px){
+        display: none;
+    }
 `
 
 function Logo(){
@@ -72,12 +75,23 @@ function Logo(){
 }
 
 function Navegar(){
+    const [ativado, setAtivado] = useState(false)
 
     return(
         <StyledNav>
-            <Link to='/'>Home</Link>
-            <Link to='/Publicar'>Postar</Link>
-            <Link to='/Contato'>Contato</Link>
+            <div id="menu" onClick={()=>{
+                setAtivado(status => !status)
+            }}>|||</div>
+            {/* {ativado && (
+                <div>
+
+                </div>
+            )} */}
+            <div id={ativado ? undefined : "links"} className={ativado ? "navAtiv" : undefined}>
+                <Link to='/'>Home</Link>
+                <Link to='/Publicar'>Postar</Link>
+                <Link to='/Contato'>Contato</Link>
+            </div>
         </StyledNav>
     )
 }
