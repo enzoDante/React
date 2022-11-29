@@ -34,6 +34,16 @@ app.post('/api/Cadastrar', (req, res) => {
     const senha = req.body.senha
     const imagem = req.body.img
     console.log(nome)
+    //banco de dados - tabela usuarios insert
+    supabase.from('usuarios').insert({
+        nome: nome,
+        senha: senha,
+        imagem: imagem
+    }).then((valor) => {
+        console.log(valor)
+    }).catch((err) => {
+        console.log(err)
+    })
     res.send('teste')
 })
 
