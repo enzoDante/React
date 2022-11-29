@@ -5,18 +5,18 @@ import Axios from 'axios'
 
 export default function Cadastro(){
 
-    const [formData, setFormData] = useState({nome: '', senha: '', csenha: ''})
+    const [formDataa, setFormData] = useState({nome: '', senha: '', csenha: ''})
     const [valido, setValido] = useState({nome: '', senha: '', csenha: ''})
 
     const setValues = e =>{
-        setFormData({...formData, [e.target.name]: e.target.value})
+        setFormData({...formDataa, [e.target.name]: e.target.value})
         let msg = ' '
 
         if(e.target.value.length < 5)
             msg = 'Digite pelo menos 5 caracteres!'
         setValido({...valido, [e.target.name]: msg})
 
-        if((e.target.name === 'csenha' && formData.senha !== e.target.value)){
+        if((e.target.name === 'csenha' && formDataa.senha !== e.target.value)){
             msg = 'As senhas precisam ser iguais!'
             let targt = 'csenha'
             setValido({...valido, [targt]: msg})
@@ -25,14 +25,17 @@ export default function Cadastro(){
 
     // ============ set image ==============
     const [img, setImg] = useState('')
+    const [fileImg, setFileImg] = useState(null)
     const fileInput = useRef()
 
     const setProfile = e => {
         setImg(URL.createObjectURL(e.target.files[0]))
+        setFileImg(e.target.files)
     }
 
     const removerImg = () => {
         setImg('')
+        setFileImg(null)
         fileInput.current.value = ''
     }
     // =====================================
@@ -41,11 +44,20 @@ export default function Cadastro(){
         if(valido.nome === ' ' && valido.senha === ' ' && valido.csenha === ' '){
             alert('sucesos')
 
+            let dados = new FormData()
+            dados.append("nome", formDataa.nome)
+            dados.append("senha", formDataa.senha)
+            dados.append("img", fileImg)
+
             Axios.post('http://localhost:3001/api/Cadastrar', {
-                nome: formData.nome,
-                senha: formData.senha,
-                img: 'teste'
-            }).then((e) => {
+                nome: formDataa.nome,
+                senha: formDataa.senha,
+                img: fileImg,
+                headers: {
+                    "Content-Type": `multipart/form-data`
+                }
+            }
+            ).then((e) => {
                 alert('foi?')
                 console.log(e)
             })
@@ -54,11 +66,12 @@ export default function Cadastro(){
     //==================================
     useEffect(() => {
         // console.log(valido)
+        console.log(fileImg)
     })
 
     return(
         <StyledCont>
-            <form action="" method="post" autoComplete="off">
+            <form action="" method="post" encType="multipart/form-data" autoComplete="off">
                 <div>
                     <input type="file" onChange={setProfile} ref={fileInput} accept='image/*' name="foto" id="foto" />
                     <label id="lfoto" htmlFor="foto">Imagem de perfil <img src="/images/image.png" alt="" /></label>
