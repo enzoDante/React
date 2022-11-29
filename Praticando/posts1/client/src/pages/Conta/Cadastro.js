@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { StyledCont } from "./StyledCont";
 import { Link } from "react-router-dom";
+import Axios from 'axios'
 
 export default function Cadastro(){
 
@@ -35,8 +36,24 @@ export default function Cadastro(){
         fileInput.current.value = ''
     }
     // =====================================
+    const butao = e => {
+        e.preventDefault()
+        if(valido.nome === ' ' && valido.senha === ' ' && valido.csenha === ' '){
+            alert('sucesos')
+
+            Axios.post('http://localhost:3001/api/Cadastrar', {
+                nome: formData.nome,
+                senha: formData.senha,
+                img: 'teste'
+            }).then((e) => {
+                alert('foi?')
+                console.log(e)
+            })
+        }
+    }
+    //==================================
     useEffect(() => {
-        console.log(valido)
+        // console.log(valido)
     })
 
     return(
@@ -72,12 +89,7 @@ export default function Cadastro(){
                     />
                     <p>{valido.csenha}</p>
                 </div>
-                <button type="submit" onClick={(e) => {
-                    e.preventDefault()
-                    if(valido.nome === ' ' && valido.senha === ' ' && valido.csenha === ' '){
-                        alert('sucesos')
-                    }
-                }}>Cadastrar</button>
+                <button type="submit" onClick={butao}>Cadastrar</button>
 
                 <Link to='/Login'>Login</Link>
             </form>
