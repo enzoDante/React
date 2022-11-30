@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import { StyledCont } from "./StyledCont";
 import { Link } from "react-router-dom";
 import Axios from 'axios'
+import { supabase } from "../../components/userConfig/bdConfig";
+
 
 export default function Cadastro(){
 
@@ -27,10 +29,12 @@ export default function Cadastro(){
     const [img, setImg] = useState('')
     const [fileImg, setFileImg] = useState(null)
     const fileInput = useRef()
+    const [nomeimg, setNomeImg] = useState('')
 
     const setProfile = e => {
         setImg(URL.createObjectURL(e.target.files[0]))
-        setFileImg(e.target.files)
+        setFileImg(e.target.files[0])
+        setNomeImg(e.target.files[0].name.split('.').pop())
     }
 
     const removerImg = () => {
@@ -39,25 +43,31 @@ export default function Cadastro(){
         fileInput.current.value = ''
     }
     // =====================================
-    const butao = e => {
+    const butao = async e => {
         e.preventDefault()
         if(valido.nome === ' ' && valido.senha === ' ' && valido.csenha === ' '){
             alert('sucesos')
 
-            let dados = new FormData()
+            let nomedaimagem = ''
+            if(img !== ''){
+                await supabase.storage.from("imagens").upload('public/'+formDataa.nome.replace(/ /g, '-').normalize('NFD').replace(/[\u0300-\u036f]/g, "")+"."+nomeimg, fileImg) //+fileImg?.name
+
+                nomedaimagem = 'https://xdcauufxptlfaznnkmlt.supabase.co/storage/v1/object/public/imagens/public/'+formDataa.nome.replace(/ /g, '-').normalize('NFD').replace(/[\u0300-\u036f]/g, "")+"."+nomeimg
+            }
+            //img!== '' ? 'public/'+formDataa.nome+"."+nomeimg : ''
+            const dados = new FormData()
+            dados.append("img", nomedaimagem) //fileImg
             dados.append("nome", formDataa.nome)
             dados.append("senha", formDataa.senha)
-            dados.append("img", fileImg)
-
-            Axios.post('http://localhost:3001/api/Cadastrar', {
-                nome: formDataa.nome,
-                senha: formDataa.senha,
-                img: fileImg,
-                headers: {
-                    "Content-Type": `multipart/form-data`
+            //multipart/form-data;  boundary=${dados._boundary}
+            const headers = {
+                'headers': {
+                    'Content-Type': 'application/json'
                 }
             }
-            ).then((e) => {
+            
+
+            await Axios.post('http://localhost:3001/api/Cadastrar', dados, headers).then((e) => {
                 alert('foi?')
                 console.log(e)
             })
@@ -67,6 +77,9 @@ export default function Cadastro(){
     useEffect(() => {
         // console.log(valido)
         console.log(fileImg)
+        console.log(fileImg?.name)
+        console.log('ue')
+        console.log(nomeimg)
     })
 
     return(

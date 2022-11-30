@@ -24,7 +24,13 @@ const supabase = createClient(PROJECT_URL, PUBLIC_KEY)
         app.use(bodyParser.urlencoded({extended: false}))
         app.use(bodyParser.json())
     //Cors
-        app.use(cors())
+        app.use((req, res, next) => {
+            res.header("Access-Control-Allow-Origin", "*");
+            res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE")
+            res.header("Access-Control-Allow-Headers", "X-PINGOTHER, Content-Type, Authorization")
+            app.use(cors())
+            next()
+        })
 
 app.get('/', (req, res) => {
     res.send('teste')
@@ -34,17 +40,19 @@ app.post('/api/Cadastrar', (req, res) => {
     const senha = req.body.senha
     const imagem = req.body.img
     console.log(nome)
-    console.log(imagem)
+    // console.log(imagem)
+    // supabase.storage.from("imagens").upload('public/'+ imagem?.name, imagem)
     //banco de dados - tabela usuarios insert
-    // supabase.from('usuarios').insert({
-    //     nome: nome,
-    //     senha: senha,
-    //     imagem: imagem
-    // }).then((valor) => {
-    //     console.log(valor)
-    // }).catch((err) => {
-    //     console.log(err)
-    // })
+    supabase.from('usuarios').insert({
+        nome: nome,
+        senha: senha,
+        imagem: imagem
+        
+    }).then((valor) => {
+        console.log(valor)
+    }).catch((err) => {
+        console.log(err)
+    })
     // res.send('teste')
     res.send(req.body)
 })
