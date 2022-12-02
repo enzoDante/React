@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 import { ThemeContext } from "../../estilos/theme"
 
 export default function Perfil(){
-    const {user} = useContext(UserContext)
+    const {user, setUser} = useContext(UserContext)
     const {mode, setMode} = useContext(ThemeContext)
     const [ativado, setAtivado] = useState(false)
 
@@ -22,7 +22,7 @@ export default function Perfil(){
             <div className={ativado ? "menu active" : "menu"}>
                 <h3>{user.nome}</h3>
                 <ul>
-                    <li><img src="/images/user.png" alt="" /><Link to="/perfil">Perfil</Link></li>
+                    <li><img src="/images/user.png" alt="" /><Link to={"/perfil?id="+user.id}>Perfil</Link></li>
 
                     <li><img src="/images/settings.png" alt="" /><Link to="/config">Configs</Link></li>
 
@@ -37,7 +37,14 @@ export default function Perfil(){
 
                     {/* <li><img src="/images/question.png" alt="" /><Link to="/ajuda">Ajuda</Link></li> */}
 
-                    <li><img src="/images/log-out.png" alt="" /><Link to="/sair">Sair</Link></li>
+                    <li><img src="/images/log-out.png" alt="" /><p onClick={() => {
+                        localStorage.removeItem("userRedeSocial1");
+                        setUser({
+                            id: '',
+                            nome: '',
+                            img: ''
+                        })
+                    }}>Sair</p></li>
                 </ul>
             </div>
         </StyledPerfil>

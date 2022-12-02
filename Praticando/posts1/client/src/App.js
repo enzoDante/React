@@ -1,4 +1,4 @@
-import {useContext} from 'react'
+import {useContext, useEffect} from 'react'
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import { ThemeProvider } from 'styled-components';
 import { darkTheme, lightTheme, ThemeContext } from './components/estilos/theme';
@@ -11,9 +11,25 @@ import PerfilUser from './pages/Perfiluser/PerfilUser';
 import Cadastro from './pages/Conta/Cadastro';
 import Login from './pages/Conta/Login';
 import Config from './pages/Config/Config';
+import { UserContext } from './components/userConfig/user';
 
 function App() {
   const {mode} = useContext(ThemeContext)
+  const {user, setUser} = useContext(UserContext)
+
+  useEffect(() => {
+    if(user.id === ''){
+      if(localStorage.getItem('userRedeSocial1')){
+        const valores = JSON.parse(localStorage.getItem('userRedeSocial1'))
+        setUser({
+          id: valores.id,
+          nome: valores.nome,
+          img: valores.img
+        })
+      }
+
+    }
+  })
 
   return (
     <Router>

@@ -9,12 +9,12 @@ export const StyledPerfil = styled.div`
     position: relative;
     flex-direction: column;
 
-    a{
+    a, p{
         display: block;
         color: black;
         font-weight: bold;
     }
-    a:hover{
+    a:hover, p:hover{
         text-decoration: underline;
     }
     .profile{
@@ -90,7 +90,7 @@ export const StyledPerfil = styled.div`
         opacity: 1;
     }
 
-    li a{
+    li a, li p{
         display: inline-block;
         text-decoration: none;
         color: ${({theme}) => theme.textDefault || '#555'};
@@ -106,7 +106,7 @@ export const StyledPerfil = styled.div`
         margin-top: -25px;
         cursor: pointer;
     }
-    li:hover a{
+    li:hover a, li:hover p{
         color: ${({theme}) => theme.textNavHover2 || '#75BDDF'};
     }
     label:hover{
