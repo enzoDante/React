@@ -10,6 +10,10 @@ export function Services(){
         },
         GetLogin(nome, senha){
             return supabase.from('usuarios').select("id_usuario, nome, imagem").match({nome: nome, senha: senha})
+        },
+
+        GetUserInfo(id){
+            return 0
         }
     }
 }

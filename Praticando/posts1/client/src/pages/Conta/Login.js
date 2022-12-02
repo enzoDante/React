@@ -42,7 +42,7 @@ export default function Login(){
                         nome: valordouser.nome,
                         img: valordouser.img
                     })
-                    // window.location.href = 'http://localhost:3000/Perfil'
+                    window.location.href = 'http://localhost:3000/Perfil?id='+valordouser.id
                 }else{
                     console.log('aqui')
                     service.GetNome(formData.nome).then((e) => {

@@ -1,12 +1,22 @@
 import { StyledPerfUser } from "./StyledPerfilUser";
 import {Link} from 'react-router-dom'
+import { Services } from "../../components/userConfig/GetValues";
 
 
 
 export default function PerfilUser(){
+    const service = Services()
+
+    const carregar = e => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const id = urlParams.get('id')
+        console.log(id)
+        service.GetUserInfo(id)
+    }
+
     return(
         <StyledPerfUser>
-            <div id="userlogs">
+            <div id="userlogs" onLoad={carregar}>
                 <div className="imgperfil">
                     <img src="/images/profile.jpg" alt="" />
                 </div>
