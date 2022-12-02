@@ -56,7 +56,8 @@ app.post('/api/Cadastrar', (req, res) => {
     // res.send('teste')
     res.send(req.body)
 })
+const port = process.env.PORT || 3001;
 
-app.listen(3001, () => {
-    console.log('server na porta: http://localhost:3001')
+app.listen(port, () => {
+    console.log('server na porta: http://localhost:'+port)
 })

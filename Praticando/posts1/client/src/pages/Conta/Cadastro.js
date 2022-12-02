@@ -1,24 +1,24 @@
 import { useEffect, useRef, useState } from "react";
 import { StyledCont } from "./StyledCont";
 import { Link } from "react-router-dom";
-import Axios from 'axios'
 import { supabase } from "../../components/userConfig/bdConfig";
+import { Services } from "../../components/userConfig/GetValues";
 
 
 export default function Cadastro(){
 
-    const [formDataa, setFormData] = useState({nome: '', senha: '', csenha: ''})
+    const [formData, setFormData] = useState({nome: '', senha: '', csenha: ''})
     const [valido, setValido] = useState({nome: '', senha: '', csenha: ''})
 
     const setValues = e =>{
-        setFormData({...formDataa, [e.target.name]: e.target.value})
+        setFormData({...formData, [e.target.name]: e.target.value})
         let msg = ' '
 
         if(e.target.value.length < 5)
             msg = 'Digite pelo menos 5 caracteres!'
         setValido({...valido, [e.target.name]: msg})
 
-        if((e.target.name === 'csenha' && formDataa.senha !== e.target.value)){
+        if((e.target.name === 'csenha' && formData.senha !== e.target.value)){
             msg = 'As senhas precisam ser iguais!'
             let targt = 'csenha'
             setValido({...valido, [targt]: msg})
@@ -43,43 +43,48 @@ export default function Cadastro(){
         fileInput.current.value = ''
     }
     // =====================================
+    const service = Services()
     const butao = async e => {
         e.preventDefault()
-        if(valido.nome === ' ' && valido.senha === ' ' && valido.csenha === ' '){
-            alert('sucesos')
-
-            let nomedaimagem = ''
-            if(img !== ''){
-                await supabase.storage.from("imagens").upload('public/'+formDataa.nome.replace(/ /g, '-').normalize('NFD').replace(/[\u0300-\u036f]/g, "")+"."+nomeimg, fileImg) //+fileImg?.name
-
-                nomedaimagem = 'https://xdcauufxptlfaznnkmlt.supabase.co/storage/v1/object/public/imagens/public/'+formDataa.nome.replace(/ /g, '-').normalize('NFD').replace(/[\u0300-\u036f]/g, "")+"."+nomeimg
-            }
-            //img!== '' ? 'public/'+formDataa.nome+"."+nomeimg : ''
-            const dados = new FormData()
-            dados.append("img", nomedaimagem) //fileImg
-            dados.append("nome", formDataa.nome)
-            dados.append("senha", formDataa.senha)
-            //multipart/form-data;  boundary=${dados._boundary}
-            const headers = {
-                'headers': {
-                    'Content-Type': 'application/json'
-                }
-            }
+        let nomevalido = ''
+        service.GetNome(formData.nome).then( async(dado) => {
             
+            const nomevalor = 'nome'
+            if(dado.data.length > 0){
+                setValido({...valido, [nomevalor]: 'Nome existente!'})
+                nomevalido = 'Nome existente!'
+            }
 
-            await Axios.post('http://localhost:3001/api/Cadastrar', dados, headers).then((e) => {
-                alert('foi?')
-                console.log(e)
-            })
-        }
+            //cadastro-==========================================================
+            if(nomevalido === '' && valido.nome === ' ' && valido.senha === ' ' && valido.csenha === ' '){
+                alert('sucesos')
+    
+                let nomedaimagem = ''
+                if(img !== ''){
+                    await supabase.storage.from("imagens").upload('public/'+formData.nome.replace(/ /g, '-').normalize('NFD').replace(/[\u0300-\u036f]/g, "")+"."+nomeimg, fileImg) //+fileImg?.name
+    
+                    nomedaimagem = 'public/'+formData.nome.replace(/ /g, '-').normalize('NFD').replace(/[\u0300-\u036f]/g, "")+"."+nomeimg
+                }
+
+                //serve p pegar a url da imagem q ta online mt útil
+                // const {data} = supabase.storage.from('imagens').getPublicUrl('public/agora-sim-ultimo-teste.jpeg')
+                // console.log(data.publicUrl)
+
+                await supabase.from('usuarios').insert({
+                    nome: formData.nome,
+                    senha: formData.senha,
+                    imagem: nomedaimagem
+                })
+            }
+        })
     }
     //==================================
     useEffect(() => {
         // console.log(valido)
-        console.log(fileImg)
-        console.log(fileImg?.name)
-        console.log('ue')
-        console.log(nomeimg)
+        // console.log(fileImg)
+        // console.log(fileImg?.name)
+        // console.log('ue')
+        // console.log(nomeimg)
     })
 
     return(
