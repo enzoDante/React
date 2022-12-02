@@ -22,7 +22,7 @@ export default function Perfil(){
             <div className={ativado ? "menu active" : "menu"}>
                 <h3>{user.nome}</h3>
                 <ul>
-                    <li><img src="/images/user.png" alt="" /><Link to={"/perfil?id="+user.id}>Perfil</Link></li>
+                    <li><img src="/images/user.png" alt="" /><Link to={"/perfil?user="+user.user}>Perfil</Link></li>
 
                     <li><img src="/images/settings.png" alt="" /><Link to="/config">Configs</Link></li>
 
@@ -42,6 +42,7 @@ export default function Perfil(){
                         setUser({
                             id: '',
                             nome: '',
+                            user: '',
                             img: ''
                         })
                     }}>Sair</p></li>

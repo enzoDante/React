@@ -66,6 +66,7 @@ export const StyledPerfil = styled.div`
     }
     h3{
         margin: 5px;
+        overflow: hidden;
         color: ${({theme}) => theme.textDefault || 'black'};
     }
 

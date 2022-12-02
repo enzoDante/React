@@ -62,10 +62,11 @@ export default function Cadastro(){
                 alert('sucesos')
     
                 let nomedaimagem = ''
+                let urs = formData.nome.replace(/ /g, '-').normalize('NFD').replace(/[\u0300-\u036f]/g, "")
                 if(img !== ''){
                     await supabase.storage.from("imagens").upload('public/'+formData.nome.replace(/ /g, '-').normalize('NFD').replace(/[\u0300-\u036f]/g, "")+"."+nomeimg, fileImg) //+fileImg?.name
     
-                    nomedaimagem = 'public/'+formData.nome.replace(/ /g, '-').normalize('NFD').replace(/[\u0300-\u036f]/g, "")+"."+nomeimg
+                    nomedaimagem = 'https://xdcauufxptlfaznnkmlt.supabase.co/storage/v1/object/public/imagens/public/'+formData.nome.replace(/ /g, '-').normalize('NFD').replace(/[\u0300-\u036f]/g, "")+"."+nomeimg
                 }
 
                 //serve p pegar a url da imagem q ta online mt útil
@@ -74,6 +75,7 @@ export default function Cadastro(){
 
                 await supabase.from('usuarios').insert({
                     nome: formData.nome,
+                    user: urs,
                     senha: formData.senha,
                     imagem: nomedaimagem
                 }).then(() => {
@@ -86,14 +88,16 @@ export default function Cadastro(){
                         localStorage.setItem("userRedeSocial1", JSON.stringify({
                             id: valordoId,
                             nome: formData.nome,
+                            user: urs,
                             img: nomedaimagem
                         }))
                         setUser({
                             id: valordoId,
                             nome: formData.nome,
+                            user: urs,
                             img: nomedaimagem
                         })
-                        window.location.href = 'http://localhost:3000/Perfil'
+                        window.location.href = 'http://localhost:3000/perfil?user='+urs
 
                     })
                 })

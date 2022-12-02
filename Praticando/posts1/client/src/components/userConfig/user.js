@@ -3,6 +3,7 @@ import { createContext, useState } from "react";
 export const UserContext = createContext({
     id: '',
     nome: '',
+    user: '',
     img: '',
     setUser: () => {}
 })
@@ -11,6 +12,7 @@ export default function UserProvider({children}){
     const [user, setUser] = useState({
         id: '',
         nome: '',
+        user: '',
         img: ''
     })
 

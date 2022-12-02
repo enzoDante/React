@@ -29,20 +29,23 @@ export default function Login(){
                         valordouser = {
                             id: el.id_usuario,
                             img: el.imagem,
-                            nome: el.nome
+                            nome: el.nome,
+                            user: el.user
                         }
                     })
                     localStorage.setItem("userRedeSocial1", JSON.stringify({
                         id: valordouser.id,
                         nome: valordouser.nome,
+                        user: valordouser.user,
                         img: valordouser.img
                     }))
                     setUser({
                         id: valordouser.id,
                         nome: valordouser.nome,
+                        user: valordouser.user,
                         img: valordouser.img
                     })
-                    window.location.href = 'http://localhost:3000/Perfil?id='+valordouser.id
+                    window.location.href = 'http://localhost:3000/perfil?user='+valordouser.user
                 }else{
                     console.log('aqui')
                     service.GetNome(formData.nome).then((e) => {

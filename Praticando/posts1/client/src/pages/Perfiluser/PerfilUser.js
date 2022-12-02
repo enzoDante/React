@@ -9,7 +9,7 @@ export default function PerfilUser(){
 
     const carregar = e => {
         const urlParams = new URLSearchParams(window.location.search);
-        const id = urlParams.get('id')
+        const id = urlParams.get('user')
         console.log(id)
         service.GetUserInfo(id)
     }

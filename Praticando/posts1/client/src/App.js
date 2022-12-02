@@ -24,6 +24,7 @@ function App() {
         setUser({
           id: valores.id,
           nome: valores.nome,
+          user: valores.user,
           img: valores.img
         })
       }
