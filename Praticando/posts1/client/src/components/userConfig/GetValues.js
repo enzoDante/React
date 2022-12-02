@@ -13,7 +13,7 @@ export function Services(){
         },
 
         GetUserInfo(id){
-            return 0
+            return supabase.from('usuarios').select('id_usuario, nome, imagem').eq('user', id)
         }
     }
 }
