@@ -20,6 +20,7 @@ export default function Login(){
         e.preventDefault()
         
         if(formData.nome !== '' && formData.senha !== ''){
+            console.log('apertou o login')
             service.GetLogin(formData.nome, formData.senha).then((e) => {
                 if(e.data.length > 0){
                     console.log(e.data)
