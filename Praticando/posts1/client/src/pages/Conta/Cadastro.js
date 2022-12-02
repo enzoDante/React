@@ -1,8 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useContext } from "react";
 import { StyledCont } from "./StyledCont";
 import { Link } from "react-router-dom";
 import { supabase } from "../../components/userConfig/bdConfig";
 import { Services } from "../../components/userConfig/GetValues";
+import { UserContext } from "../../components/userConfig/user";
 
 
 export default function Cadastro(){
@@ -43,6 +44,7 @@ export default function Cadastro(){
         fileInput.current.value = ''
     }
     // =====================================
+    const {user, setUser} = useContext(UserContext)
     const service = Services()
     const butao = async e => {
         e.preventDefault()
@@ -54,7 +56,7 @@ export default function Cadastro(){
                 setValido({...valido, [nomevalor]: 'Nome existente!'})
                 nomevalido = 'Nome existente!'
             }
-
+            //window.location.reload()
             //cadastro-==========================================================
             if(nomevalido === '' && valido.nome === ' ' && valido.senha === ' ' && valido.csenha === ' '){
                 alert('sucesos')
@@ -74,6 +76,26 @@ export default function Cadastro(){
                     nome: formData.nome,
                     senha: formData.senha,
                     imagem: nomedaimagem
+                }).then(() => {
+
+                    service.GetUserId(formData.nome).then((e) => {
+                        let valordoId = null
+                        e.data.forEach((el) => {
+                            valordoId = el.id_usuario                            
+                        })
+                        localStorage.setItem("userRedeSocial1", JSON.stringify({
+                            id: valordoId,
+                            nome: formData.nome,
+                            img: nomedaimagem
+                        }))
+                        setUser({
+                            id: valordoId,
+                            nome: formData.nome,
+                            img: nomedaimagem
+                        })
+                        window.location.href = 'http://localhost:3000/Perfil'
+
+                    })
                 })
             }
         })
@@ -89,41 +111,43 @@ export default function Cadastro(){
 
     return(
         <StyledCont>
-            <form action="" method="post" encType="multipart/form-data" autoComplete="off">
-                <div>
-                    <input type="file" onChange={setProfile} ref={fileInput} accept='image/*' name="foto" id="foto" />
-                    <label id="lfoto" htmlFor="foto">Imagem de perfil <img src="/images/image.png" alt="" /></label>
-                </div>
-                {img !== '' && (
-                    <>
-                       <span onClick={removerImg}>Deletar</span>
-                        <div id="imagemPerfil">
-                            <img src={img} alt="" />
-                        </div>
-                    </>
-                )}
-                <div>
-                    <input type="text" onChange={setValues} name="nome" id="nome" placeholder="Nome:"
-                        className={(valido.nome !== '' && valido.nome !== ' ') ? 'invalido' : undefined}
-                    />
-                    <p>{valido.nome}</p>
-                </div>
-                <div>
-                    <input type="password" onChange={setValues} name="senha" id="senha" placeholder="Senha:" 
-                        className={(valido.senha !== '' && valido.senha !== ' ')? "invalido":undefined}
-                    />
-                    <p>{valido.senha}</p>
-                </div>
-                <div>
-                    <input type="password" onChange={setValues} name="csenha" id="csenha" placeholder="Confirmar senha:"
-                        className={(valido.csenha !== '' && valido.csenha !== ' ')? "invalido":undefined}
-                    />
-                    <p>{valido.csenha}</p>
-                </div>
-                <button type="submit" onClick={butao}>Cadastrar</button>
+            {user.id === '' && (
+                <form action="" method="post" encType="multipart/form-data" autoComplete="off">
+                    <div>
+                        <input type="file" onChange={setProfile} ref={fileInput} accept='image/*' name="foto" id="foto" />
+                        <label id="lfoto" htmlFor="foto">Imagem de perfil <img src="/images/image.png" alt="" /></label>
+                    </div>
+                    {img !== '' && (
+                        <>
+                        <span onClick={removerImg}>Deletar</span>
+                            <div id="imagemPerfil">
+                                <img src={img} alt="" />
+                            </div>
+                        </>
+                    )}
+                    <div>
+                        <input type="text" onChange={setValues} name="nome" id="nome" placeholder="Nome:"
+                            className={(valido.nome !== '' && valido.nome !== ' ') ? 'invalido' : undefined}
+                        />
+                        <p>{valido.nome}</p>
+                    </div>
+                    <div>
+                        <input type="password" onChange={setValues} name="senha" id="senha" placeholder="Senha:" 
+                            className={(valido.senha !== '' && valido.senha !== ' ')? "invalido":undefined}
+                        />
+                        <p>{valido.senha}</p>
+                    </div>
+                    <div>
+                        <input type="password" onChange={setValues} name="csenha" id="csenha" placeholder="Confirmar senha:"
+                            className={(valido.csenha !== '' && valido.csenha !== ' ')? "invalido":undefined}
+                        />
+                        <p>{valido.csenha}</p>
+                    </div>
+                    <button type="submit" onClick={butao}>Cadastrar</button>
 
-                <Link to='/Login'>Login</Link>
-            </form>
+                    <Link to='/Login'>Login</Link>
+                </form>
+            )}
         </StyledCont>
     )
 }

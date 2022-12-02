@@ -15,7 +15,8 @@ export default function Perfil(){
             <div className="profile" onClick={() => {
                 setAtivado(status => !status)
             }}>
-                <img src={"/images/"+user.img} alt="foto de perfil" />
+                {/* "/images/"+ */}
+                <img src={user.img} alt="foto de perfil" />
             </div>
             {/* =================== */}
             <div className={ativado ? "menu active" : "menu"}>
