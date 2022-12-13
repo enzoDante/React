@@ -27,12 +27,12 @@ export const darkTheme = {
 }
 
 export const ThemeContext = createContext({
-    mode: false,
+    mode: true,
     setMode: () => {}
 })
 
 export default function ProviderTheme({children}){
-    const [mode, setMode] = useState(false)
+    const [mode, setMode] = useState(true)
     const alterarTema = {
         mode: mode,
         setMode: setMode
