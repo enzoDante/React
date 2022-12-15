@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledCadastro = styled.main`
+export const StyledCadastr = styled.div`
     min-width: 200px;
     max-width: 1200px;
     min-height: 500px;
@@ -11,7 +11,5 @@ export const StyledCadastro = styled.main`
     label{
         color: ${({theme}) => theme.textDefault};
     }
-    form{
-        background-color: ${({theme}) => theme.backgroundForm};
-    }
+
 `
