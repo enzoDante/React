@@ -4,6 +4,7 @@ import { ThemeProvider } from "styled-components";
 import { CSSGeral } from "./components/estiloGeral/CSSGeral";
 import { darkTheme, lightTheme, ThemeContext } from "./components/estiloGeral/theme";
 import Header from "./components/header/Header";
+import Cadastro from "./pages/cadastro-login/Cadastro";
 
 function App() {
   const {mode} = useContext(ThemeContext)
@@ -22,6 +23,9 @@ function App() {
       {/* rotas */}
       <Routes>
         <Route exact='true' path="/" ></Route>
+
+        {/* rotas de cadastro e login */}
+        <Route path="/Cadastro" element={<Cadastro />}></Route>
       </Routes>
     </Router>
   );

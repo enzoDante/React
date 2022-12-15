@@ -13,8 +13,8 @@ export const UserContext = createContext({
 export default function UserProvider({children}){
     const [usu, setUsu] = useState({
         id: '',
-        nome: '',
-        email: '',
+        nome: 'Dante',
+        email: 'asd@fasd.com',
         imagem: ''
     })
     const alterarDados = {
