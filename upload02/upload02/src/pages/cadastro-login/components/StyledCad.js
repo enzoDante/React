@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
-export const StyledCadastr = styled.div`
+export const StyledCad = styled.main`
+    background-color: ${({theme}) => theme.background1};
     min-width: 200px;
     max-width: 1200px;
     min-height: 500px;
@@ -10,6 +11,12 @@ export const StyledCadastr = styled.div`
 
     label{
         color: ${({theme}) => theme.textDefault};
+        display: block;
+        margin: 10px;
+    }
+    input[type=file]{
+        display: none;
+
     }
 
 `

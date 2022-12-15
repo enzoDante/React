@@ -1,14 +1,17 @@
 // import { useContext } from "react"
 // import { UserContext } from "../../components/useConfig/Userprovider"
-import { StyledCadastr } from "./StyledCadastro"
+
+import { StyledCad } from "./components/StyledCad";
+
 
 export default function Cadastro(){
     // const {setUsu} = useContext(UserContext)
+
     return(
-        <StyledCadastr>
+        <StyledCad>
             <form action="" method="post">
                 <div>
-                    <input type="file" name="img" id="img" />
+                    <input type="file" name="img" accept="image/*" id="img" />
                     <label htmlFor="img">Imagem de perfil</label>
                 </div>
                 <div>
@@ -29,6 +32,6 @@ export default function Cadastro(){
                 </div>
                 <button type="submit">Criar conta</button>
             </form>
-        </StyledCadastr>
+        </StyledCad>
     )
 }

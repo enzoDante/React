@@ -37,7 +37,7 @@ function Nav(){
     return(
         <div id="nav">
             <Link className="links" to='/'>Home</Link>
-            <Link className="links">Sobre</Link>
+            <Link className="links" to='/Sobre'>Sobre</Link>
             <Link className="links">Contato</Link>
         </div>
     )
